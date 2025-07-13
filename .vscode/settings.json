@@ -1,0 +1,11 @@
+{
+  "deno.enablePaths": [
+    "src"
+  ],
+  "deno.lint": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  },
+  "deno.enable": true,
+  "deno.importMap": "./deno.json"
+}
