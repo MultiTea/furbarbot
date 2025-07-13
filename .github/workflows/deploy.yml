@@ -9,6 +9,7 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
+    environment: "Production"
 
     permissions:
       id-token: write # Needed for auth with Deno Deploy
@@ -23,19 +24,15 @@ jobs:
         with:
           deno-version: v2.x
 
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
-
-      - name: Install step
-        run: "deno"
-
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
           project: "lucasbolea-furbarbot-53"
           entrypoint: "src/bot.ts"
           root: ""
-          
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+          MONGODB_DB: ${{ secrets.MONGODB_DB }}
+          ADMIN_CHAT_ID: ${{ secrets.ADMIN_CHAT_ID }}
           
