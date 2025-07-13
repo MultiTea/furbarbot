@@ -28,8 +28,7 @@ jobs:
         uses: denoland/deployctl@v1
         with:
           project: "lucasbolea-furbarbot-53"
-          entrypoint: "bot.ts"
-          root: "src/"
+          entrypoint: "src/bot.ts"
         env:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
